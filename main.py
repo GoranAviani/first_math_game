@@ -18,15 +18,25 @@ def display_separator():
 
 def get_user_input():
     user_input = input("What is your selection?: ")
-    return user_input.lower()
+    return user_input
 
 def play_game():
-    print("This is a game")
+    questions = {'1+1=': '2', '1+2=': '3', '1+3=': '4'}
+    print("Lets stourt our round of questions!")
+    for task, result in questions.items():
+        display_separator()
+        print(task)
+        user_input = get_user_input()
+        if user_input == result:
+            print('Bravo!')
+        else:
+            print(":(")
 
 def main():
     display_intro()
     display_menu()
     user_input = get_user_input()
+    user_input = user_input.lower()
     if user_input == "n":
         display_separator()
         play_game()
