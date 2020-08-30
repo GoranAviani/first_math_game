@@ -21,16 +21,22 @@ def get_user_input():
     return user_input
 
 def play_game():
-    questions = {'1+1=': '2', '1+2=': '3', '1+3=': '4'}
-    print("Lets stourt our round of questions!")
+    questions = {'1+1=': '2', '1+2=': '3', '1+3=': '4', '1+__=2': '1'}
+    print("Lets start our round of questions!")
+    correct = 0
+    total = 0
     for task, result in questions.items():
         display_separator()
         print(task)
+        total += 1
         user_input = get_user_input()
         if user_input == result:
             print('Bravo!')
+            correct += 1
         else:
             print(":(")
+
+    return total, correct
 
 def main():
     display_intro()
@@ -39,7 +45,8 @@ def main():
     user_input = user_input.lower()
     if user_input == "n":
         display_separator()
-        play_game()
+        total, correct = play_game()
+        print("You had {} out of {}. Good bye!" .format(correct, total))
     else:
         exit()
 
